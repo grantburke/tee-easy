@@ -17,7 +17,7 @@ return new class extends Migration
             $table->decimal('full_round_rate');
             $table->decimal('half_round_rate');
             $table->decimal('twilight_rate');
-            $table->dateTime('twilight_start_time');
+            $table->time('twilight_start_time');
             $table->timestamps();
         });
     }
