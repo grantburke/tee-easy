@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\DailySchedule;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -15,5 +16,11 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-   return Inertia::render('Index');
+    return Inertia::render('Index');
+});
+
+Route::get('/daily-schedules', function () {
+    return Inertia::render('DailySchedules/Index', [
+        'daily_schedules' => DailySchedule::with('rate')->get()
+    ]);
 });

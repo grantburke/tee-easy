@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
             'updated_at' => now()
         ]);
 
-        DB::table('operation_hours')->insert([
+        DB::table('daily_schedules')->insert([
             'day_of_week' => 'Monday',
             'opening_time' => '06:00',
             'closing_time' => '17:00',
@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        DB::table('operation_hours')->insert([
+        DB::table('daily_schedules')->insert([
             'day_of_week' => 'Tuesday',
             'opening_time' => '10:00',
             'closing_time' => '17:00',
@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        DB::table('operation_hours')->insert([
+        DB::table('daily_schedules')->insert([
             'day_of_week' => 'Wednesday',
             'opening_time' => '06:00',
             'closing_time' => '17:00',
@@ -65,7 +65,7 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        DB::table('operation_hours')->insert([
+        DB::table('daily_schedules')->insert([
             'day_of_week' => 'Thursday',
             'opening_time' => '06:00',
             'closing_time' => '17:00',
@@ -73,7 +73,7 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        DB::table('operation_hours')->insert([
+        DB::table('daily_schedules')->insert([
             'day_of_week' => 'Friday',
             'opening_time' => '06:00',
             'closing_time' => '17:00',
@@ -81,7 +81,7 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        DB::table('operation_hours')->insert([
+        DB::table('daily_schedules')->insert([
             'day_of_week' => 'Saturday',
             'opening_time' => '06:00',
             'closing_time' => '17:00',
@@ -89,7 +89,7 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        DB::table('operation_hours')->insert([
+        DB::table('daily_schedules')->insert([
             'day_of_week' => 'Sunday',
             'opening_time' => '06:00',
             'closing_time' => '17:00',

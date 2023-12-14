@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('operation_hours', function (Blueprint $table) {
+        Schema::create('daily_schedules', function (Blueprint $table) {
             $table->id();
             $table->enum('day_of_week', ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']);
             $table->time('opening_time')->nullable();
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('operation_hours');
+        Schema::dropIfExists('daily_schedules');
     }
 };
