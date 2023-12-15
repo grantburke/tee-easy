@@ -16,9 +16,10 @@ use Inertia\Inertia;
 |
 */
 
-Route::prefix('/{tenant_id}')->group(function () {
-    Route::get('/hello', function (Request $request) {
-        echo "Hello {$request->tenant_id}";
+Route::prefix('/{course_id}')->middleware('ensure.course')->group(function () {
+    Route::get('/hello', function () {
+        $course = session('course');
+        echo "Hello {$course->name}";
     });
 });
 
