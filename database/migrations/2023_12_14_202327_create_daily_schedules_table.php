@@ -21,8 +21,8 @@ return new class extends Migration
 
             $table->foreignId('rate_id')->constrained()->cascadeOnDelete();
 
-            // TODO: Update when tenant model is added
-            // $table->foreignId('tenant_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('course_id')->constrained()->cascadeOnDelete();
+            $table->unique(['course_id', 'day_of_week']);
         });
     }
 

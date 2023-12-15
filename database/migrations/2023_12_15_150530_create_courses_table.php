@@ -11,16 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tee_times', function (Blueprint $table) {
+        Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('start_time');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email');
-            $table->string('phone');
+            $table->string('name');
+            $table->string('course_id')->unique();
             $table->timestamps();
-
-            $table->foreignId('course_id')->constrained()->cascadeOnDelete();
         });
     }
 
@@ -29,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tee_times');
+        Schema::dropIfExists('courses');
     }
 };

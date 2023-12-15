@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\DailySchedule;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -14,6 +15,12 @@ use Inertia\Inertia;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::prefix('/{tenant_id}')->group(function () {
+    Route::get('/hello', function (Request $request) {
+        echo "Hello {$request->tenant_id}";
+    });
+});
 
 Route::get('/', function () {
     return Inertia::render('Index');
