@@ -2,13 +2,11 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-
 use App\Models\Course;
 use App\Models\DailySchedule;
 use App\Models\Rate;
+use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,84 +15,91 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $courses = [
+            Course::factory()->create([
+                'name' => 'Pebble Beach Golf Links',
+                'course_id' => 'pebble-beach',
+            ]),
+            Course::factory()->create([
+                'name' => 'Spyglass Hill Golf Course',
+                'course_id' => 'spyglass-hill',
+            ])
+        ];
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        foreach ($courses as $course) {
+            $weekday_rate_id = Rate::factory()->create([
+                'name' => 'Weekday',
+                'full_round_rate' => 60.00,
+                'half_round_rate' => 35.00,
+                'twilight_rate' => 50.00,
+                'twilight_start_time' => '13:00',
+                'course_id' => $course->id
+            ])->id;
 
-        $course_id = Course::factory()->create([
-            'name' => 'Pebble Beach Golf Links',
-            'course_id' => 'pebble-beach',
-        ])->id;
+            $weekend_rate_id = Rate::factory()->create([
+                'name' => 'Weekend',
+                'full_round_rate' => 70.00,
+                'half_round_rate' => 40.00,
+                'twilight_rate' => 55.00,
+                'twilight_start_time' => '13:00',
+                'course_id' => $course->id
+            ])->id;
 
-        $weekday_rate_id = Rate::factory()->create([
-            'name' => 'Weekday',
-            'full_round_rate' => 60.00,
-            'half_round_rate' => 35.00,
-            'twilight_rate' => 50.00,
-            'twilight_start_time' => '13:00',
-            'course_id' => $course_id
-        ])->id;
+            DailySchedule::factory()->create([
+                'day_of_week' => 'Monday',
+                'opening_time' => '06:00',
+                'closing_time' => '17:00',
+                'rate_id' => $weekday_rate_id,
+                'course_id' => $course->id
+            ]);
+            DailySchedule::factory()->create([
+                'day_of_week' => 'Tuesday',
+                'opening_time' => '10:00',
+                'closing_time' => '17:00',
+                'rate_id' => $weekday_rate_id,
+                'course_id' => $course->id
+            ]);
+            DailySchedule::factory()->create([
+                'day_of_week' => 'Wednesday',
+                'opening_time' => '06:00',
+                'closing_time' => '17:00',
+                'rate_id' => $weekday_rate_id,
+                'course_id' => $course->id
+            ]);
+            DailySchedule::factory()->create([
+                'day_of_week' => 'Thursday',
+                'opening_time' => '06:00',
+                'closing_time' => '17:00',
+                'rate_id' => $weekday_rate_id,
+                'course_id' => $course->id
+            ]);
+            DailySchedule::factory()->create([
+                'day_of_week' => 'Friday',
+                'opening_time' => '06:00',
+                'closing_time' => '17:00',
+                'rate_id' => $weekday_rate_id,
+                'course_id' => $course->id
+            ]);
+            DailySchedule::factory()->create([
+                'day_of_week' => 'Saturday',
+                'opening_time' => '06:00',
+                'closing_time' => '17:00',
+                'rate_id' => $weekend_rate_id,
+                'course_id' => $course->id
+            ]);
+            DailySchedule::factory()->create([
+                'day_of_week' => 'Sunday',
+                'opening_time' => '06:00',
+                'closing_time' => '17:00',
+                'rate_id' => $weekend_rate_id,
+                'course_id' => $course->id
+            ]);
 
-        $weekend_rate_id = Rate::factory()->create([
-            'name' => 'Weekend',
-            'full_round_rate' => 70.00,
-            'half_round_rate' => 40.00,
-            'twilight_rate' => 55.00,
-            'twilight_start_time' => '13:00',
-            'course_id' => $course_id
-        ])->id;
-
-        DailySchedule::factory()->create([
-            'day_of_week' => 'Monday',
-            'opening_time' => '06:00',
-            'closing_time' => '17:00',
-            'rate_id' => $weekday_rate_id,
-            'course_id' => $course_id
-        ]);
-        DailySchedule::factory()->create([
-            'day_of_week' => 'Tuesday',
-            'opening_time' => '10:00',
-            'closing_time' => '17:00',
-            'rate_id' => $weekday_rate_id,
-            'course_id' => $course_id
-        ]);
-        DailySchedule::factory()->create([
-            'day_of_week' => 'Wednesday',
-            'opening_time' => '06:00',
-            'closing_time' => '17:00',
-            'rate_id' => $weekday_rate_id,
-            'course_id' => $course_id
-        ]);
-        DailySchedule::factory()->create([
-            'day_of_week' => 'Thursday',
-            'opening_time' => '06:00',
-            'closing_time' => '17:00',
-            'rate_id' => $weekday_rate_id,
-            'course_id' => $course_id
-        ]);
-        DailySchedule::factory()->create([
-            'day_of_week' => 'Friday',
-            'opening_time' => '06:00',
-            'closing_time' => '17:00',
-            'rate_id' => $weekday_rate_id,
-            'course_id' => $course_id
-        ]);
-        DailySchedule::factory()->create([
-            'day_of_week' => 'Saturday',
-            'opening_time' => '06:00',
-            'closing_time' => '17:00',
-            'rate_id' => $weekend_rate_id,
-            'course_id' => $course_id
-        ]);
-        DailySchedule::factory()->create([
-            'day_of_week' => 'Sunday',
-            'opening_time' => '06:00',
-            'closing_time' => '17:00',
-            'rate_id' => $weekend_rate_id,
-            'course_id' => $course_id
-        ]);
+            User::factory()->create([
+                'name' => "{$course->name} Admin",
+                'email' => "admin@{$course->course_id}.com",
+                'course_id' => $course->id
+            ]);
+        }
     }
 }
