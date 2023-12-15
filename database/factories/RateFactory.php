@@ -21,7 +21,6 @@ class RateFactory extends Factory
             'full_round_rate' => fake()->randomFloat(2, 50.00, 100.00),
             'half_round_rate' => fake()->randomFloat(2, 50.00, 100.00),
             'twilight_rate' => fake()->randomFloat(2, 50.00, 100.00),
-            'twilight_start_time' => fake()->time(),
             'course_id' => null,
         ];
     }

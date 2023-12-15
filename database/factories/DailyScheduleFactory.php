@@ -20,6 +20,7 @@ class DailyScheduleFactory extends Factory
             'day_of_week' => fake()->dayOfWeek(),
             'opening_time' => fake()->time(),
             'closing_time' => fake()->time(),
+            'twilight_start_time' => fake()->time(),
             'rate_id' => null
         ];
     }

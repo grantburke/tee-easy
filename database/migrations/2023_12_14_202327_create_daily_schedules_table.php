@@ -16,6 +16,7 @@ return new class extends Migration
             $table->enum('day_of_week', ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']);
             $table->time('opening_time')->nullable();
             $table->time('closing_time')->nullable();
+            $table->time('twilight_start_time')->nullable();
             $table->boolean('is_closed')->default(false);
             $table->timestamps();
 
