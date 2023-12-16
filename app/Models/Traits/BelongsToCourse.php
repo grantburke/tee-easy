@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Models\Traits;
 
 use App\Models\Course;
@@ -13,8 +12,8 @@ trait BelongsToCourse
         static::addGlobalScope(new CourseScope);
 
         static::creating(function ($model) {
-            if (session()->has('course_id')) {
-                $model->course_id = session()->get('course_id');
+            if (session()->has('course')) {
+                $model->course_id = session()->get('course')->id;
             }
         });
     }

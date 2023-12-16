@@ -2,9 +2,11 @@
 
 namespace App\Models\Scopes;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
+use Illuminate\Support\Facades\Auth;
 
 class CourseScope implements Scope
 {
@@ -13,6 +15,8 @@ class CourseScope implements Scope
      */
     public function apply(Builder $builder, Model $model): void
     {
-        $builder->where('course_id', session('course')->id);
+        if ((Auth::hasUser() && $model instanceof User) || !($model instanceof User)) {
+            $builder->where('course_id', session('course')->id);
+        }
     }
 }

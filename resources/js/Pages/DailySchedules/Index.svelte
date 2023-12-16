@@ -1,7 +1,12 @@
 <script>
     export let daily_schedules;
     // console.log(operation_hours);
+    import { router } from "@inertiajs/svelte";
 </script>
+
+<form on:submit|preventDefault={() => router.post("/logout")}>
+    <button type="submit">Logout</button>
+</form>
 
 <h1>Operation Hours</h1>
 
